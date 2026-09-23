@@ -14,7 +14,7 @@ public class CartBean {
     }
     public void addProduct(Product product) {
         for (CartItemBean item : items) {
-            if (item.getProduct().getId().equals(product.getId())) {
+            if (item.getProduct().getId() == product.getId()) {
                 item.setQuantity(item.getQuantity() + 1);
                 return;
             }
@@ -22,13 +22,13 @@ public class CartBean {
         items.add(new CartItemBean(product, 1));
     }
 
-    public void removeProduct(String productId) {
-        items.removeIf(item -> item.getProduct().getId().equals(productId));
+    public void removeProduct(int productId) {
+        items.removeIf(item -> item.getProduct().getId() == productId);
     }
 
-    public void updateQuantity(String productId, int quantity) {
+    public void updateQuantity(int productId, int quantity) {
         for (CartItemBean item : items) {
-            if (item.getProduct().getId().equals(productId)) {
+            if (item.getProduct().getId() == productId) {
                 item.setQuantity(quantity);
                 return;
             }
